@@ -87,7 +87,7 @@ public class Node {
 
     public void setIsExpand(boolean isExpand) {
         this.isExpand = isExpand;
-        if(isExpand){
+        if(!isExpand){
             /**
              * 将子节点也收缩
              */

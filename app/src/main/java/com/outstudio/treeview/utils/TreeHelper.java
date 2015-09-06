@@ -1,5 +1,7 @@
 package com.outstudio.treeview.utils;
 
+import android.util.Log;
+
 import com.outstudio.treeview.R;
 import com.outstudio.treeview.utils.annotation.TreeNodeId;
 import com.outstudio.treeview.utils.annotation.TreeNodeLabel;
@@ -43,10 +45,14 @@ public class TreeHelper {
                     field.setAccessible(true);
                     label = (String) field.get(t);
                 }
+            }
                 node = new Node(id, pid, label);
                 nodes.add(node);
-            }
+
         }
+        /**
+         * 设置node间的节点关系
+         */
         for (int i = 0; i < nodes.size(); i++) {
             Node n = nodes.get(i);
             for (int j = i + 1; j < nodes.size(); j++) {
@@ -63,6 +69,7 @@ public class TreeHelper {
         for (Node n : nodes) {
             setNodeIcon(n);
         }
+        Log.e("TAG",nodes.size()+"");
         return nodes;
     }
 
@@ -74,6 +81,7 @@ public class TreeHelper {
         for (Node node : rootNodes) {
             addNode(result, node, defaultExpandLevel, 1);
         }
+        Log.e("Tag",result.size()+"");
         return result;
     }
 
